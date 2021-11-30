@@ -1,0 +1,21 @@
+name: "premierbloc - Create Github deployment"
+description: "Creates a Github deployment."
+
+inputs:
+  environment:
+    description: "The target environment to deploy to."
+    required: true
+  token:
+    description: "The Github token to use for authentication."
+    required: true
+
+outputs:
+  id:
+    description: "The id of the Github deployment."
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.environment }}
+    - ${{ inputs.token }}
